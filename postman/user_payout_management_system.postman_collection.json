@@ -1,0 +1,327 @@
+{
+  "info": {
+    "_postman_id": "014d47c1-6cdb-4c7c-84d1-e275bb98869e",
+    "name": "user_payout_management_system",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "54369187",
+    "_collection_link": "https://go.postman.co/collection/54369187-014d47c1-6cdb-4c7c-84d1-e275bb98869e?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "user API",
+      "item": [
+        {
+          "name": "CREATE user",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"John Doe\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/users",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET user",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"name\": \"John Doe\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/users/6a5c9f2a6bcd483bb3086d97",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "users",
+                "6a5c9f2a6bcd483bb3086d97"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "sales API",
+      "item": [
+        {
+          "name": "CREATE sales",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"userId\": \"6a5c9f2a6bcd483bb3086d97\",\r\n  \"brand\": \"brand_4\",\r\n  \"earning\": 400\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/sales",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "sales"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "GET sales",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
+          "request": {
+            "method": "GET",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/sales/6a5ca4f29836c027a6031c1d",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "sales",
+                "6a5ca4f29836c027a6031c1d"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "PATCH reconcile sale",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n  \"status\": \"APPROVED\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/sales/6a5ca4f29836c027a6031c1d/reconcile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "sales",
+                "6a5ca4f29836c027a6031c1d",
+                "reconcile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "Advancepayout API",
+      "item": [
+        {
+          "name": "advance payouts",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/payouts/advance",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "payouts",
+                "advance"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "without processing advancePayout sale",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"status\":\"APPROVED\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/sales/6a5cb6ad5b2a08776c03307e/reconcile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "sales",
+                "6a5cb6ad5b2a08776c03307e",
+                "reconcile"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "APPROVED Sale",
+          "request": {
+            "method": "PATCH",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"status\":\"APPROVED\"\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/sales/6a5cb823d1bd9bedd4cd890a/reconcile",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "sales",
+                "6a5cb823d1bd9bedd4cd890a",
+                "reconcile"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "withdrawal APIs",
+      "item": [
+        {
+          "name": "withdrawal",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\":\"6a5c9f2a6bcd483bb3086d97\",\r\n    \"amount\":40\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/withdrawals",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "withdrawals"
+              ]
+            }
+          },
+          "response": []
+        },
+        {
+          "name": "24 hour withdrawal check",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "body": {
+              "mode": "raw",
+              "raw": "{\r\n    \"userId\":\"6a5c9f2a6bcd483bb3086d97\",\r\n    \"amount\":40\r\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{base_url}}/withdrawals",
+              "host": [
+                "{{base_url}}"
+              ],
+              "path": [
+                "withdrawals"
+              ]
+            }
+          },
+          "response": []
+        }
+      ]
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": ""
+    }
+  ]
+}
