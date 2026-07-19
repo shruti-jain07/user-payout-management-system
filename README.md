@@ -82,7 +82,7 @@ npm install
 
 ## create a .env file
 PORT=3000
-MONGODB_URI=mongodb+srv://shru200319:jklmnopqr@cluster0.kw1nscm.mongodb.net/?appName=Cluster0
+MONGODB_URI=your_mongodb_connection_string
 
 ## Run Application 
 npm run dev
