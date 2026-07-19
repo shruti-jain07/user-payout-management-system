@@ -93,5 +93,6 @@ postman\user_payout_management_system.postman_collection.json
 ### Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone (https://github.com/shruti-jain07/user-payout-management-system.git)
+---
 
