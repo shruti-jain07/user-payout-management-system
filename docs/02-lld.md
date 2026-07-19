@@ -211,8 +211,11 @@ Represents an affiliate user who earns commission through sales.
 
 | Attribute | Description |
 |-----------|-------------|
-| userId | Unique identifier of the user |
+| _id | Unique identifier of the user |
 | name | Name of the user |
+|withdrawableBalance| Credit the failed payout amount back into the user's withdrawable balance|
+|lastWithdrawalAt| to check last withdrawal |
+|timestamps|
 
 ---
 
@@ -231,14 +234,16 @@ Represents a sale made by a user.
 
 | Attribute | Description |
 |-----------|-------------|
-| saleId | Unique identifier of the sale |
+| _id | Unique identifier of the sale |
 | userId | User who owns the sale |
 | brand | Brand associated with the sale |
 | earning | Commission earned from the sale |
 | status | PENDING, APPROVED, REJECTED |
+|advanceAmount | Needed later during reconciliation.|
 | advancePaid | Advance payout amount for this sale |
 | isAdvancePaid | Indicates whether advance payout has already been processed |
-
+|reconciledAt|Indicates when reconciliation happened|
+|timestamps|
 ---
 
 ## 5.3 Financial Transaction
@@ -254,12 +259,12 @@ Represents every movement of money in the system.
 
 | Attribute | Description |
 |-----------|-------------|
-| transactionId | Unique identifier of the transaction |
+| _id | Unique identifier of the transaction |
 | userId | User associated with the transaction |
 | saleId | Related sale |
 | type | ADVANCE_PAYOUT, FINAL_PAYOUT, RECOVERY_ADJUSTMENT, FAILED_PAYOUT_RECOVERY |
 | amount | Transaction amount |
-| createdAt | Transaction creation time |
+| timestamps |
 
 ---
 
@@ -277,11 +282,11 @@ Represents a withdrawal request created by the user.
 
 | Attribute | Description |
 |-----------|-------------|
-| withdrawalId | Unique identifier |
+| _id | Unique identifier |
 | userId | User requesting withdrawal |
 | amount | Requested withdrawal amount |
 | status | PENDING, SUCCESS, FAILED, CANCELLED, REJECTED |
-| requestedAt | Time when withdrawal was initiated |
+| timestamps |
 
 ---
 
@@ -408,7 +413,8 @@ Represents an affiliate user who owns sales, receives payouts, and initiates wit
 
 - createUser()
 - getUserById()
-
+- updateUser()
+- updateWithdrawableBalance()
 ---
 
 ## 8.2 Sale
@@ -418,9 +424,11 @@ Represents an affiliate user who owns sales, receives payouts, and initiates wit
 Represents a sale and maintains its payout lifecycle.
 
 ### Methods
+- createSale()
+- getSaleById()
+- updateSale()
+- getEligibleSalesForAdvancePayout()
 
-- updateStatus()
-- markAdvancePaid()
 
 ---
 
@@ -443,8 +451,9 @@ Represents every financial movement and maintains the transaction history.
 Represents a user's withdrawal request and tracks its lifecycle.
 
 ### Methods
-
-- updateStatus()
+- createWithdrawal()
+- getWithdrawalById()
+- updateWithdrawal()
 
 ---
 
@@ -459,7 +468,7 @@ Handles all operations related to sales.
 - createSale() → Sale
 - getSaleById() → Sale
 - reconcileSale() → Sale
-
+- getEligibleSalesForAdvancePayout()→sale
 ---
 
 ## 8.6 PayoutService

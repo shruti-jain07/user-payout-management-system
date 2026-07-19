@@ -14,6 +14,13 @@ class SaleRepository {
       new: true,
     });
   }
+
+  async getEligibleSalesForAdvancePayout() {
+  return await Sale.find({
+    status: "PENDING",
+    isAdvancePaid: false,
+  });
+}
 }
 
 module.exports = new SaleRepository();
